@@ -11,6 +11,7 @@ function App() {
   const  [moveList, setmovieList] = useState([])
   const [destaqueData, setdestaqueData] = useState(null)
 
+
   useEffect(() =>{
     const loadAll = async () =>{
       //pegando a lista total
@@ -21,8 +22,8 @@ function App() {
       let originals = list.filter(i=>i.slug === 'originals')
       let randomChosen = Math.floor(Math.random() * (originals[0].itens.results.length - 1))
       let chosen = originals[0].itens.results[randomChosen]
-
-      console.log(chosen)
+      let chosenInfo = await tmdb.getMovieInfo(chosen.id, 'tv')
+      setdestaqueData(chosenInfo)
     }
     loadAll()
   }, [])
@@ -31,7 +32,7 @@ function App() {
     <div className="page">
 
     {FilmeDestaque &&
-      <FilmeDestaque item={FilmeDestaque} />
+      <FilmeDestaque item={destaqueData} />
     }
 
       <section className="lists">
