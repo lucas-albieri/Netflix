@@ -1,0 +1,38 @@
+header{
+    background: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    position: fixed;
+    z-index: 999;
+    padding: 0 30px;
+    padding-top: 20px;
+    background: transparent;
+    transition: all ease 0.5s;
+}
+
+header.black{
+    background: #141414;
+    padding-bottom: 20px;
+}
+
+.header-logo img{
+    width: 7%;
+    object-fit: contain;
+    cursor: pointer;
+}
+
+.header-user{
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.header-user img{
+    width: 30%;
+    object-fit: contain;
+    border-radius: 3px;
+    object-position: right;
+    cursor: pointer;
+}
