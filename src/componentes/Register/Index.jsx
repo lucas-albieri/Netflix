@@ -9,7 +9,7 @@ import AdminIcon from '@rsuite/icons/Admin';
 import { useState } from "react"
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
-
+import { Message, toaster } from 'rsuite';
 
 
 const Register = () => {
@@ -17,7 +17,7 @@ const Register = () => {
 
     const [visible, setVisible] = useState(false);
     const [destaqueData, setdestaqueData] = useState(null)
-    const [moveList, setmovieList] = useState([])
+    const [, setmovieList] = useState([])
 
     const handleChange = () => {
         setVisible(!visible);
@@ -36,12 +36,18 @@ const Register = () => {
             let chosen = originals[0].itens.results[randomChosen]
             let chosenInfo = await tmdb.getMovieInfo(chosen.id, 'tv')
             setdestaqueData(chosenInfo)
-            console.log(chosenInfo)
         }
         loadAll()
     }, [])
 
-
+    const [type] = useState('success');
+    const message = (
+        <Message showIcon type={type} style={{
+           
+        }} >
+             Conta Criada com sucesso!!
+        </Message>
+    );
 
     return (
         <div className="register">
@@ -102,7 +108,7 @@ const Register = () => {
 
                 <Link to="/login"> <h1>Já tem uma conta?</h1> </Link>
                 <div className="btn-entrar-ar">
-                    <Link to="/user"> <button className="btn-entrar">REGISTER</button> </Link>
+                    <Link to="/user"> <button className="btn-entrar" onClick={() => toaster.push(message)}>REGISTER</button> </Link>
                 </div>
 
 

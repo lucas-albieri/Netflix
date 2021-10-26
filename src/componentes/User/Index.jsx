@@ -6,7 +6,7 @@ import user3 from '../../assets/User/user3.png'
 import user4 from '../../assets/User/user4.png'
 import { Link } from 'react-router-dom';
 
-const User = (key,props) => {
+const User = (key) => {
 
     return (
         <div className="user">

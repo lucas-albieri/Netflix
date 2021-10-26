@@ -8,7 +8,7 @@
 }
 
 .register-back {
-    width: 70vw;
+    width: 65vw;
     height: 100vh;
     background-size: cover;
     background-position: center;
@@ -16,7 +16,7 @@
 }
 
 form {
-    width: 30vw;
+    width: 35vw;
     height: 100vh;
     background: #080808;
     display: flex;

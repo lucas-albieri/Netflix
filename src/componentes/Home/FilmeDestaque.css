@@ -51,7 +51,7 @@
 .destaque-btn {
     width: 30%;
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
 }
 
 .assistir {

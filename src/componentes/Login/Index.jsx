@@ -9,7 +9,7 @@ import AdminIcon from '@rsuite/icons/Admin';
 import { useState } from "react"
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
-
+import { Message, toaster } from 'rsuite';
 
 
 const Login = ({ item }) => {
@@ -17,7 +17,7 @@ const Login = ({ item }) => {
 
     const [visible, setVisible] = useState(false);
     const [destaqueData, setdestaqueData] = useState(null)
-    const [moveList, setmovieList] = useState([])
+    const [, setmovieList] = useState([])
 
     const handleChange = () => {
         setVisible(!visible);
@@ -36,12 +36,18 @@ const Login = ({ item }) => {
             let chosen = originals[0].itens.results[randomChosen]
             let chosenInfo = await tmdb.getMovieInfo(chosen.id, 'tv')
             setdestaqueData(chosenInfo)
-            console.log(chosenInfo)
         }
         loadAll()
     }, [])
 
-
+    const [type] = useState('success');
+    const message = (
+        <Message showIcon type={type} style={{
+           
+        }} >
+             Logado com sucesso!!
+        </Message>
+    );
 
     return (
         <div className="login">
@@ -60,9 +66,9 @@ const Login = ({ item }) => {
                         boxShadow: '0px 0px 18px 1px rgba(255,0,0,0.53)',
                     }} >
                         <Input placeholder="Usuário" name="usuario" className="input-usuario" style={{
-                            fontSize: 17,
+                            fontSize: 18,
                             color: 'black',
-                            padding: '13px 13px',
+                            padding: '17px 17px',
 
                         }} />
                         <InputGroup.Button >
@@ -78,13 +84,13 @@ const Login = ({ item }) => {
                         boxShadow: '0px 0px 18px 1px rgba(255,0,0,0.53)',
                     }} >
                         <Input type={visible ? 'text' : 'password'} name="senha" className="input-senha" placeholder="Senha" style={{
-                            fontSize: 17,
+                            fontSize: 18,
                             color: 'black',
-                            padding: '13px 13px',
+                            padding: '17px 17px',
 
                         }} />
                         <InputGroup.Button onClick={handleChange} style={{
-                            padding: '27px 13px 23px',
+                            padding: '31px 13px 28px',
                         }}>
                             {visible ? <VisibleIcon /> : <UnvisibleIcon />}
                         </InputGroup.Button>
@@ -92,7 +98,7 @@ const Login = ({ item }) => {
                 </div>
                 <Link to="/register"> <h1>Ainda não tem uma conta?</h1> </Link>
                 <div className="btn-entrar-ar">
-                    <Link to="/user"> <button className="btn-entrar">LOGIN</button> </Link>
+                    <Link to="/user"> <button className="btn-entrar" onClick={() => toaster.push(message)} >LOGIN</button> </Link>
                 </div>
             </form>
         </div>
