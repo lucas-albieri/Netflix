@@ -3,7 +3,7 @@ import MovieRow from './MovieRow';
 import loading from '../../assets/loading.gif'
 
 import { useEffect, useState } from 'react';
-import '../../App.css';
+import './Home.css';
 import FilmeDestaque from './FilmeDestaque';
 import Header from './Header';
 
@@ -49,7 +49,10 @@ function Home() {
   }, [])
 
   return (
-    <div className="page">
+    <div className="page" style={{
+      background: '#111',
+      color: 'white',
+    }}>
 
       <Header black={blackHeader} />
 

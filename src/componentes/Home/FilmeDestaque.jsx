@@ -2,8 +2,6 @@ import './FilmeDestaque.css'
 
 const FilmeDestaque = ({ item }) => {
 
-    console.log(item)
-
     let firstDate = new Date(item && item.first_air_date)
 
     let genres = []
