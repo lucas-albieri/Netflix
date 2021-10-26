@@ -1,0 +1,43 @@
+.user{
+    width: 100vw;
+    height: 100vh;
+   overflow-x: hidden;
+}
+.user h1{
+    text-align: center;
+    padding-top: 5%;
+}
+
+.user a{
+    text-decoration: none;
+}
+
+.cards{
+    margin-top: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.edit-user{
+    width: 100%;
+    padding-right: 10%;
+    margin-top: 10%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.edit-user button{
+    border-radius: 6px;
+    font-size: 1rem;
+    padding: 10px 50px;
+    cursor: pointer;
+    border: solid 1px firebrick;
+    background: none;
+    transition: 0.1s ease-in;
+}
+
+.edit-user button:hover{
+    background: firebrick;
+}

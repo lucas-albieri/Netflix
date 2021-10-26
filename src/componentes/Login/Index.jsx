@@ -92,7 +92,7 @@ const Login = ({ item }) => {
                 </div>
                 <Link to="/register"> <h1>Ainda não tem uma conta?</h1> </Link>
                 <div className="btn-entrar-ar">
-                    <Link to="/home"> <button className="btn-entrar">LOGIN</button> </Link>
+                    <Link to="/user"> <button className="btn-entrar">LOGIN</button> </Link>
                 </div>
             </form>
         </div>

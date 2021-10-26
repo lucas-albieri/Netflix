@@ -1,0 +1,26 @@
+.card-user{
+    margin: 0 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: scale(90%);
+    transition: all ease-in 0.2s;
+}
+
+.card-user img{
+    width: 65%;
+    border-radius: 2px;
+    object-fit: cover;
+}
+.card-user:hover {
+    transform: scale(100%); 
+    cursor: pointer;
+}
+
+.card-user h2{
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-top: 5px;
+}
