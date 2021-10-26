@@ -12,10 +12,10 @@ const User = (key,props) => {
         <div className="user">
             <h1>QUEM ESTÁ ASSISTINDO?</h1>
             <section className="cards">
-               <Link to="home"> <CardUser key={key} title="Luke" img={user1}  /> </Link>
-               <Link to="home"> <CardUser key={key} title="Mica" img={user2}  /> </Link>
-               <Link to="home"> <CardUser key={key} title="Herco" img={user3}  /> </Link>
-               <Link to="home"> <CardUser key={key} title="Phill" img={user4}  /> </Link>
+               <Link to="home"> <CardUser key={key} title="Luke" img={user1} /> </Link>
+               <Link to="home"> <CardUser key={key} title="Mica" img={user2} /> </Link>
+               <Link to="home"> <CardUser key={key} title="Herco" img={user3} /> </Link>
+               <Link to="home"> <CardUser key={key} title="Phill" img={user4} /> </Link>
             </section>
             <div className="edit-user">
                 <button>Desejo alterar meu Usuário</button>
