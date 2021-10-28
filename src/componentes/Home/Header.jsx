@@ -10,11 +10,11 @@ const Header = ({ black }) => {
     return (
         <header className={black ? 'black' : ""}>
             <div className="header-logo">
-                <img src={netflix} alt="netflix" />
+            <Link to="/home">    <img src={netflix} alt="netflix" /> </Link>
             </div>
             <div className="header-user">
 
-                <img src={user} alt="menu" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" />
+              <img src={user} alt="menu" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" /> 
 
 
                 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
