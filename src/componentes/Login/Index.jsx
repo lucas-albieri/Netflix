@@ -2,18 +2,18 @@ import "./styles.css"
 import N from "../../assets/Login/N.png"
 
 import tmdb from '../../tmdb';
-import { InputGroup, Input } from "rsuite"
+import { InputGroup } from "rsuite"
 import UnvisibleIcon from '@rsuite/icons/Unvisible';
 import VisibleIcon from '@rsuite/icons/Visible';
 import AdminIcon from '@rsuite/icons/Admin';
 import { useState } from "react"
-import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { useEffect, useContext } from "react";
 import { Message, toaster } from 'rsuite';
+import StoreContext from "../../Store/Context";
 
 
-const Login = ({ item }) => {
-
+const Login = () => {
 
     const [visible, setVisible] = useState(false);
     const [destaqueData, setdestaqueData] = useState(null)
@@ -23,6 +23,7 @@ const Login = ({ item }) => {
         setVisible(!visible);
     };
 
+    // PEGANDO O FILME EM DESTAQUE
     useEffect(() => {
         const loadAll = async () => {
 
@@ -40,14 +41,55 @@ const Login = ({ item }) => {
         loadAll()
     }, [])
 
+
+    // Popup de LOGADO COM SUCESSO
     const [type] = useState('success');
     const message = (
         <Message showIcon type={type} style={{
-           
+
         }} >
-             Logado com sucesso!!
+            Logado com sucesso!!
         </Message>
     );
+
+    //login autenticado
+    function initialState() {
+        return { usuario: '', senha: '' }
+    }
+
+
+    const [values, setValues] = useState(initialState)
+    const { setToken } = useContext(StoreContext)
+    const history = useHistory()
+
+
+    function onChange(event) {
+        const { value, name } = event.target
+        setValues({
+            ...values,
+            [name]: value,
+        })
+    }
+
+    function onSubmit(event) {
+        event.preventDefault()
+
+        const { token } = login(values)
+        if (token) {
+            setToken(token)
+            toaster.push(message)
+            return history.push('/user')
+        }
+        setValues(initialState)
+    }
+
+    function login({ usuario, senha }) {
+        if (usuario === 'lucas' && senha === 'lucas') {
+            return { token: `1324` }
+        }
+        return { error: `Usuário ou Senha inválido` }
+    }
+
 
     return (
         <div className="login">
@@ -57,7 +99,7 @@ const Login = ({ item }) => {
 
             </div>
 
-            <form action="">
+            <form autoComplete="nope" onSubmit={onSubmit}>
                 <img src={N} alt="" />
                 <div className="input-area">
                     <InputGroup style={{
@@ -65,11 +107,14 @@ const Login = ({ item }) => {
                         width: 350,
                         boxShadow: '0px 0px 18px 1px rgba(255,0,0,0.53)',
                     }} >
-                        <Input placeholder="Usuário" name="usuario" className="input-usuario" style={{
+                        <input placeholder="Usuário" name="usuario" className="input-usuario"  onChange={onChange} value={values.usuario} style={{
                             fontSize: 18,
                             color: 'black',
                             padding: '17px 17px',
-
+                            display: 'block',
+                            width: '100%',
+                            border: 'none',
+                            paddingRight: '36px',
                         }} />
                         <InputGroup.Button >
                             <AdminIcon />
@@ -83,14 +128,19 @@ const Login = ({ item }) => {
                         width: 350,
                         boxShadow: '0px 0px 18px 1px rgba(255,0,0,0.53)',
                     }} >
-                        <Input type={visible ? 'text' : 'password'} name="senha" className="input-senha" placeholder="Senha" style={{
+                        <input type={visible ? 'text' : 'password'} name="senha" className="input-senha" onChange={onChange} value={values.senha} placeholder="Senha" style={{
                             fontSize: 18,
                             color: 'black',
                             padding: '17px 17px',
+                            display: 'block',
+                            width: '100%',
+                            border: 'none',
+                            paddingRight: '36px',
 
                         }} />
                         <InputGroup.Button onClick={handleChange} style={{
                             padding: '31px 13px 28px',
+                            right: '0',
                         }}>
                             {visible ? <VisibleIcon /> : <UnvisibleIcon />}
                         </InputGroup.Button>
@@ -98,7 +148,7 @@ const Login = ({ item }) => {
                 </div>
                 <Link to="/register"> <h1>Ainda não tem uma conta?</h1> </Link>
                 <div className="btn-entrar-ar">
-                    <Link to="/user"> <button className="btn-entrar" onClick={() => toaster.push(message)} >LOGIN</button> </Link>
+                    <button className="btn-entrar" >LOGIN</button>
                 </div>
             </form>
         </div>
