@@ -1,0 +1,36 @@
+.movie-row{
+    margin-bottom: 2rem;
+}
+
+.movie-row h2{
+    margin: 0 0 0 30px;
+}
+
+.movierow-list{
+    transition: all ease 0.5s;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.movierow-listarea{
+    overflow-x: hidden;
+  
+}
+
+.movierow-item{
+    display: inline-block;
+    width: 220px;
+}
+
+.movierow-item img{
+    width: 100%;
+    transform: scale(0.9);
+    transition: 0.15s ease-in;
+    cursor: pointer;
+}
+
+.movierow-item img:hover{
+    transform: scale(1);
+}
+

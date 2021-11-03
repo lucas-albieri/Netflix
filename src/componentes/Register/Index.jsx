@@ -31,10 +31,10 @@ const Register = () => {
 
 
             //Pegando filme em destaque
-            let originals = list.filter(i => i.slug === 'originals')
+            let originals = list.filter(i => i.slug === 'horror')
             let randomChosen = Math.floor(Math.random() * (originals[0].itens.results.length - 1))
             let chosen = originals[0].itens.results[randomChosen]
-            let chosenInfo = await tmdb.getMovieInfo(chosen.id, 'tv')
+            let chosenInfo = chosen 
             setdestaqueData(chosenInfo)
         }
         loadAll()
