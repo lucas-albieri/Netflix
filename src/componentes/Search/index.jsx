@@ -1,25 +1,13 @@
 import './styles.css'
 import Header from '../Home/Header'
 import { useState, useEffect } from 'react';
-import tmdb from '../../tmdb';
 import loading from '../../assets/loading.gif'
-import FilmsList from './FilmsList';
+
 
 const Search = () => {
 
-  const [moveList, setmovieList] = useState([])
   const [blackHeader, setBlackHeader] = useState(false)
 
-
-  useEffect(() => {
-    const loadAll = async () => {
-      //pegando a lista total
-      let list = await tmdb.getHomeList()
-      setmovieList(list)
-
-    }
-    loadAll()
-  }, [])
 
   useEffect(() => {
 
@@ -38,24 +26,54 @@ const Search = () => {
 
   }, [])
 
+  const API_KEY = '5dcdf757ca2da4929d3167f06b0f5be5';
+  const API_BASE = 'https://api.themoviedb.org/3';
+
+  const [info, setInfo] = useState({})
+  const [text, setText] = useState('Faça')
+
+  useEffect(() => {
+    if (text) {
+      fetch(`${API_BASE}/search/tv?&query=${text}&page=1&language=pt-BR&api_key=${API_KEY}`)
+        .then((response) => response.json())
+        .then((response) => {
+          setInfo(response)
+          console.log(info)
+        })
+    }
+  }, [text])
+
 
   return (
     <div className="search d-flex flex-column ">
       <Header black={blackHeader} />
+
       <div className="search-body">
-        <input type="text" name="search" id="search" placeholder="Faça sua busca" autoComplete="off" /> <i class="fas fa-search"></i>
+        <input type="text" name="search" id="search" placeholder="Faça sua busca" autoComplete="off" onChange={(search) => setText(search.target.value)} value={text} /> <i class="fas fa-search"></i>
       </div>
-      <section className="lists">
-        {moveList.map((item, key) => (
-          <FilmsList key={key} title={item.title} itens={item.itens} />
-        ))}
+
+      <section className="list">
+        {info.results && (
+          <ul className="list-itens">
+            {info.results.map((item) => (
+              <li key={item.id}>
+                {
+                  (item.posther_path != 'null' && item.title != 'null')
+                  ?  <img src={`https://image.tmdb.org/t/p/w300${item.poster_path}`} alt="" />
+                   : ""
+                }
+               
+              </li>
+            ))}
+          </ul>
+        )}
       </section>
 
       <footer>
         Termos de uso e Politica de Privacidade
       </footer>
 
-      {moveList.length <= 0 &&
+      {info.length <= 0 &&
         <div className="loading">
           <img src={loading} alt="" />
         </div>

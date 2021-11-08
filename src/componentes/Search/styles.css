@@ -1,3 +1,8 @@
+body {
+    overflow-y: scroll !important;
+    padding-right: 0;
+}
+
 .search h1 {
     text-align: center;
     margin-top: 50px;
@@ -10,7 +15,7 @@
     justify-content: center;
     align-items: center;
     margin-top: 7rem;
-    margin-bottom: 15rem;
+    margin-bottom: 7rem;
 
 }
 
@@ -21,9 +26,9 @@
     border: none;
     border-bottom-left-radius: 6px;
     border-top-left-radius: 6px;
-    color: #1d1717;
+    color: #222121;
     font-size: 1.7rem;
-    font-weight: 600;
+    font-weight: 500;
     outline: 0;
     -webkit-box-shadow: -10px 0px 19px 4px rgb(255, 0, 0);
     box-shadow: -10px 0px 19px 4px rgb(255, 0, 0);
@@ -50,4 +55,26 @@
 
 .search-body i:hover {
     background: #eeeeee;
+}
+
+
+.list-itens {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+}
+
+.list-itens img {
+    object-fit: contain;
+    height: 380px;
+    margin: 5px 10px;
+    cursor: pointer;
+    transform: scale(0.95);
+    transition: 0.15s ease-in;
+}
+
+.list-itens img:hover{
+    transform: scale(1);
 }
