@@ -30,12 +30,12 @@ const Search = () => {
   const API_BASE = 'https://api.themoviedb.org/3';
 
   const [info, setInfo] = useState({})
-  const [text, setText] = useState('Faça')
+  const [text, setText] = useState('velozes e furiosos')
 
   useEffect(() => {
     if (text) {
-      fetch(`${API_BASE}/search/tv?&query=${text}&page=1&language=pt-BR&api_key=${API_KEY}`)
-        .then((response) => response.json())
+      fetch(`${API_BASE}/search/movie?&query=${text}&page=1&language=pt-BR&api_key=${API_KEY}`)
+        .then((response) => response.json())    
         .then((response) => {
           setInfo(response)
           console.log(info)
@@ -58,7 +58,7 @@ const Search = () => {
             {info.results.map((item) => (
               <li key={item.id}>
                 {
-                  (item.posther_path != 'null' && item.title != 'null')
+                  (item.posther_path !== 'null' && item.title !== 'null')
                   ?  <img src={`https://image.tmdb.org/t/p/w300${item.poster_path}`} alt="" />
                    : ""
                 }

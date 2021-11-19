@@ -23,7 +23,7 @@ function Home() {
 
       //Pegando filme em destaque
       let originals = list.filter(i => i.slug === 'originals')
-      originals[0].itens.results = originals[0].itens.results.filter(item => item.overview.length != 0)
+      originals[0].itens.results = originals[0].itens.results.filter(item => item.overview.length !== 0)
       let randomChosen = Math.floor(Math.random() * (originals[0].itens.results.length - 1))
       let chosen = originals[0].itens.results[randomChosen]
       let chosenInfo = await tmdb.getMovieInfo(chosen.id, 'tv')

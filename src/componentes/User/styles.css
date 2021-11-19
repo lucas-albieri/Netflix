@@ -1,7 +1,5 @@
 .user{
-    width: 100vw;
     height: 100vh;
-   overflow-x: hidden;
 }
 .user h1{
     text-align: center;

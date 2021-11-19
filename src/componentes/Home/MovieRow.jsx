@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Info from './Info'
 import './MovieRow.css'
 
 
@@ -47,6 +48,9 @@ const MovieRow = ({title, itens}) => {
                     ))}
                 </div>
             </div>
+
+            <Info />
+            
         </div>
      );
 }

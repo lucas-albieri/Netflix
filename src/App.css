@@ -11,7 +11,7 @@ body{
   background: #111;
   color: white;
   font-family: 'Poppins';
-  
+  overflow-x: hidden;
 }
 .lists{
   margin-top: -150px;
